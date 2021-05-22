@@ -1,0 +1,10 @@
+.tweet-list {
+  min-height: auto;
+  overflow: auto;
+}
+
+@media (min-width: 500px) {
+  .tweet-list {
+    margin-left: 8em;
+  }
+}

@@ -1,0 +1,31 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.avatar {
+  width: 4em;
+  height: 4em;
+}
+
+.header-home-label {
+  top: 0.5em;
+  left: 0.4em;
+  right: 0;
+}
+
+.top-tweets {
+  margin-left: auto;
+  margin-top: 0.5em;
+  font-size: 1.5em;
+}
+
+@media (min-width: 500px) {
+  .header-card {
+    margin-left: 8em;
+  }
+  .header-avatar {
+    display: none;
+  }
+}
