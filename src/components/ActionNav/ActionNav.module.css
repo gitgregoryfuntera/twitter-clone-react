@@ -1,5 +1,5 @@
 .actions-card {
-  position: sticky;
+  position: fixed;
   width: 100%;
   bottom: 0;
 }

@@ -1,6 +1,7 @@
 .tweet-list {
   min-height: auto;
   overflow: auto;
+  padding-bottom: 5.6em;
 }
 
 @media (min-width: 500px) {
