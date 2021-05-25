@@ -3,6 +3,7 @@ import Skeleton from "react-loading-skeleton";
 import axios from "axios";
 
 const TweetContent = () => {
+  
   const [tweet, setTweet] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,9 +24,8 @@ const TweetContent = () => {
         );
         setTweet(mergedTweets);
       } else {
-        throw "Something went wrong fetching the tweet.";
+        throw new Error ("Something went wrong fetching the tweet.");
       }
-
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -35,7 +35,10 @@ const TweetContent = () => {
   }, []);
 
   useEffect(() => {
+    
+    
     getRandomTweet();
+
   }, [getRandomTweet]);
 
   return <p>{isLoading ? <Skeleton /> : tweet}</p>;

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ListGroup, Spinner } from "react-bootstrap";
+import CreateTweetWidget from "../CreateTweetWidget/CreateTweetWidget";
 import TweetCard from "./TweetCard";
 import styles from "./TweetList.module.css";
 
@@ -13,18 +14,23 @@ const TweetList = () => {
 
   const lastElement = useCallback(
     (node) => {
-      console.log(node);
-      console.log(observer);
+      // console.log(node);
+      // console.log(observer);
 
       if (isLoading) {
         return;
       }
 
       observer.current = new IntersectionObserver((entries) => {
-        console.log(entries);
+        // console.log(entries);
         if (entries[0].isIntersecting === true) {
           setPage((prevState) => prevState + 1);
-          onGetUsers();
+          setIsLoading(true);
+
+          // Debounce to 800 to prevent
+          setTimeout(() => {
+            onGetUsers();
+          }, 800);
         }
       });
 
@@ -68,14 +74,6 @@ const TweetList = () => {
             <ListGroup.Item ref={lastElement} key={value.email}>
               <TweetCard data={value} />
             </ListGroup.Item>
-
-            {isLoading && (
-              <ListGroup.Item>
-                <Spinner animation="border" role="status" variant="primary">
-                  <span className="sr-only">Loading...</span>
-                </Spinner>
-              </ListGroup.Item>
-            )}
           </>
         );
       }
@@ -97,7 +95,26 @@ const TweetList = () => {
     );
   }
 
-  return <ListGroup className={`${styles["tweet-list"]}`}>{content}</ListGroup>;
+  let infiniteLoaderSpinner = isLoading && users.length !== 0 && (
+    <ListGroup.Item>
+      <Spinner
+        animation="border"
+        role="status"
+        variant="primary"
+        key={"loaderId"}
+      >
+        <span className="sr-only">Loading...</span>
+      </Spinner>
+    </ListGroup.Item>
+  );
+
+  return (
+    <ListGroup className={`${styles["tweet-list"]}`}>
+      {content}
+      {infiniteLoaderSpinner}
+      <CreateTweetWidget />
+    </ListGroup>
+  );
 };
 
 export default TweetList;
