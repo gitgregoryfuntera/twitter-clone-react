@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ListGroup, Spinner } from "react-bootstrap";
+import { useMediaQuery } from "react-responsive";
 import CreateTweetWidget from "../CreateTweetWidget/CreateTweetWidget";
 import TweetCard from "./TweetCard";
 import styles from "./TweetList.module.css";
@@ -9,14 +10,12 @@ const TweetList = () => {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const isMobileScreen = useMediaQuery({ query: "(max-device-width: 500px)" });
 
   const observer = useRef();
 
   const lastElement = useCallback(
     (node) => {
-      // console.log(node);
-      // console.log(observer);
-
       if (isLoading) {
         return;
       }
@@ -112,7 +111,7 @@ const TweetList = () => {
     <ListGroup className={`${styles["tweet-list"]}`}>
       {content}
       {infiniteLoaderSpinner}
-      <CreateTweetWidget />
+      {isMobileScreen && <CreateTweetWidget className={styles["tweet-widget-container"]}/>}
     </ListGroup>
   );
 };

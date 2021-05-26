@@ -1,3 +1,14 @@
+.tweet-widget-container {
+  background: #1da1f2;
+  width: 5em;
+  height: 5em;
+  position: fixed;
+  bottom: 20%;
+  right: 10%;
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+}
+
+
 .tweet-list {
   min-height: auto;
   overflow: auto;

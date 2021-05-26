@@ -1,3 +1,9 @@
+.tweet-widget-container {
+  height: 2em;
+  width: 2em;
+  background: #1da1f2;
+}
+
 .actions-card {
   position: fixed;
   width: 100%;
