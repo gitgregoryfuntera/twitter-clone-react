@@ -86,7 +86,7 @@ const TweetList = () => {
 
   if (isLoading && users.length === 0) {
     content = (
-      <ListGroup.Item>
+      <ListGroup.Item className={`text-center`}>
         <Spinner animation="border" role="status" variant="primary">
           <span className="sr-only">Loading...</span>
         </Spinner>
@@ -95,7 +95,7 @@ const TweetList = () => {
   }
 
   let infiniteLoaderSpinner = isLoading && users.length !== 0 && (
-    <ListGroup.Item>
+    <ListGroup.Item className={`text-center`}>
       <Spinner
         animation="border"
         role="status"
@@ -111,7 +111,9 @@ const TweetList = () => {
     <ListGroup className={`${styles["tweet-list"]}`}>
       {content}
       {infiniteLoaderSpinner}
-      {isMobileScreen && <CreateTweetWidget className={styles["tweet-widget-container"]}/>}
+      {isMobileScreen && (
+        <CreateTweetWidget className={styles["tweet-widget-container"]} />
+      )}
     </ListGroup>
   );
 };

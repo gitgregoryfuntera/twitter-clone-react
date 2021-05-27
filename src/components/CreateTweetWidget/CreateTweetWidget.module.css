@@ -3,6 +3,7 @@
   top: 0.8em;
   font-size: 1.8em;
   color: #fff;
+  left: 0.8em;
 }
 
 
@@ -12,5 +13,6 @@
     top: 0;
     font-size: 1em;
     color: #fff;
+    left: 0;
   }
 }
