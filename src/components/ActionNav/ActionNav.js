@@ -26,39 +26,39 @@ const ActionNav = () => {
             className={styles["actions-container"]}
           >
             <ListGroup.Item
-              className={`${styles["actions-icon"]} btn ml-2 mr-2`}
+              className={`${styles["actions-icon"]} btn ml-2 mr-2 p-1`}
             >
-              <HouseDoorFill />
+              <HouseDoorFill className={styles["specific-icon"]} />
             </ListGroup.Item>
             <ListGroup.Item
-              className={`${styles["actions-icon"]} btn ml-2 mr-2`}
+              className={`${styles["actions-icon"]} btn ml-2 mr-2 p-1`}
             >
-              <Search />
+              <Search className={styles["specific-icon"]}/>
             </ListGroup.Item>
             <ListGroup.Item
-              className={`${styles["actions-icon"]} btn ml-2 mr-2`}
+              className={`${styles["actions-icon"]} btn ml-2 mr-2 p-1`}
             >
-              <Bell />
+              <Bell className={styles["specific-icon"]}/>
             </ListGroup.Item>
             <ListGroup.Item
-              className={`${styles["actions-icon"]} btn ml-2 mr-2`}
+              className={`${styles["actions-icon"]} btn ml-2 mr-2 p-1`}
             >
-              <Envelope />
+              <Envelope className={styles["specific-icon"]}/>
             </ListGroup.Item>
 
             {!isMobileScreen && (
               <ListGroup.Item
-                className={`${styles["actions-icon"]} btn ml-2 mr-2`}
+                className={`${styles["actions-icon"]} btn ml-2 mr-2 p-1`}
               >
-                <Person />
+                <Person className={styles["specific-icon"]}/>
               </ListGroup.Item>
             )}
 
             {!isMobileScreen && (
               <ListGroup.Item
-                className={`${styles["actions-icon"]} btn ml-2 mr-2`}
+                className={`${styles["actions-icon"]} btn ml-2 mr-2 p-1`}
               >
-                <ThreeDots />
+                <ThreeDots className={styles["specific-icon"]}/>
               </ListGroup.Item>
             )}
 
@@ -66,7 +66,7 @@ const ActionNav = () => {
               <ListGroup.Item
                 className={`${styles["actions-icon"]} btn m-0 p-2`}
               >
-                <CreateTweetWidget className={styles["tweet-widget-container"]}/>
+                <CreateTweetWidget className={styles["tweet-widget-container"]} />
               </ListGroup.Item>
             )}
 

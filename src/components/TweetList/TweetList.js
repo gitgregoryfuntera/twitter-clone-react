@@ -114,6 +114,7 @@ const TweetList = () => {
       {isMobileScreen && (
         <CreateTweetWidget className={styles["tweet-widget-container"]} />
       )}
+      {/* <CreateTweetWidget className={styles["tweet-widget-container"]} /> */}
     </ListGroup>
   );
 };
