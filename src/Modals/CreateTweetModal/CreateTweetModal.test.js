@@ -1,54 +1,55 @@
 import {
-  findByTestId,
+  act,
+  cleanup,
   fireEvent,
-  getByText,
   render,
   screen,
 } from "@testing-library/react";
 import Tweet from "../../contents/Tweet/Tweet";
 import { store } from "../../redux/store/store";
 import { Provider } from "react-redux";
+import ActionNav from "../../components/ActionNav/ActionNav";
+import TweetList from "../../components/TweetList/TweetList";
+import CreateTweetModal from "./CreateTweetModal";
 
-import MatchMediaMock from "jest-matchmedia-mock";
 
-let matchMedia;
-
-const renderComponent = () =>
-  render(
-    <Provider store={store}>
-      <Tweet />
-    </Provider>
-  );
 describe("CreateTweetModal Component", () => {
-  beforeAll(() => {
- 
-  });
+  test("renders CreateTweetModal upon click on Desktop and Small Screens", async () => {
+    const { getByText, rerender } = render(
+      <Provider store={store}>
+        <Tweet />
+        <ActionNav />
+      </Provider>
+    );
 
-//   afterEach(() => {
-//     matchMedia.clear();
-//   });
-  test("renders CreateTweetModal upon click", async () => {
-    // const target = {
-    //     innerHeight: 600,
-    //     innerWidth: 800,
-    //     addEventListener: jest.fn(),
-    //     removeEventListener: jest.fn()
-    // }
-    // console.log(target);
-    const  { getByText } = renderComponent();
-    global.matchMedia = media => ({
-        addListener: () => {},
-        removeListener: () => {},
-        matches: media === '(min-width: 545px)',
-    });
     const buttonWidgetElement = await screen.findByTestId(
       "create-tweet-widget-button"
     );
+
     expect(buttonWidgetElement).toBeInTheDocument();
 
     fireEvent.click(buttonWidgetElement);
     expect(
       getByText(`Woohoo, you're reading this text in a modal!`)
     ).toBeInTheDocument();
+
+    // Re-render for small devices
+    rerender(
+      <Provider store={store}>
+        <TweetList isMobileScreen={true}/>
+        <CreateTweetModal />
+      </Provider>
+    );
+
+    const buttonWidgetElementMobile = await screen.findByTestId(
+      "create-tweet-widget-button"
+    );
+
+    expect(buttonWidgetElementMobile).toBeInTheDocument();
+     
+    expect(
+      getByText(`Woohoo, you're reading this text in a modal!`)
+    ).toBeInTheDocument();
+
   });
 });

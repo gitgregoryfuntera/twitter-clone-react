@@ -11,3 +11,29 @@
     height: 100% !important;
   }
 }
+
+.create-tweet-container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.avatar-container {
+  height: 100%;
+  width: 5em;
+  border: 1px solid;
+}
+
+.write-tweet-container {
+  height: 100%;
+  width: 100%;
+  border: 1px solid;
+}
+
+.write-tweet-container textarea {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+  overflow: hidden;
+  max-height: 25em;
+}

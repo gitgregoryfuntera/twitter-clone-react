@@ -26,22 +26,22 @@ const ActionNav = () => {
             className={styles["actions-container"]}
           >
             <ListGroup.Item
-              className={`${styles["actions-icon"]} btn ml-2 mr-2 p-1`}
+              className={`${styles["actions-icon"]} btn ml-2 mr-2 sm-p-1`}
             >
               <HouseDoorFill className={styles["specific-icon"]} />
             </ListGroup.Item>
             <ListGroup.Item
-              className={`${styles["actions-icon"]} btn ml-2 mr-2 p-1`}
+              className={`${styles["actions-icon"]} btn ml-2 mr-2 sm-p-1`}
             >
               <Search className={styles["specific-icon"]}/>
             </ListGroup.Item>
             <ListGroup.Item
-              className={`${styles["actions-icon"]} btn ml-2 mr-2 p-1`}
+              className={`${styles["actions-icon"]} btn ml-2 mr-2 sm-p-1`}
             >
               <Bell className={styles["specific-icon"]}/>
             </ListGroup.Item>
             <ListGroup.Item
-              className={`${styles["actions-icon"]} btn ml-2 mr-2 p-1`}
+              className={`${styles["actions-icon"]} btn ml-2 mr-2 sm-p-1`}
             >
               <Envelope className={styles["specific-icon"]}/>
             </ListGroup.Item>
