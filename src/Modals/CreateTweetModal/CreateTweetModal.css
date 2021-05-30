@@ -10,6 +10,10 @@
   .create-tweet-modal .modal-content {
     height: 100% !important;
   }
+
+  
+
+ 
 }
 
 .create-tweet-container {
@@ -20,13 +24,11 @@
 .avatar-container {
   height: 100%;
   width: 5em;
-  border: 1px solid;
 }
 
 .write-tweet-container {
   height: 100%;
   width: 100%;
-  border: 1px solid;
 }
 
 .write-tweet-container textarea {
@@ -36,4 +38,22 @@
   outline: none;
   overflow: hidden;
   max-height: 25em;
+}
+
+.everyone-see-toggle {
+  cursor: pointer;
+}
+
+.globe-icon {
+  position: relative;
+  bottom: 1.5px;
+}
+
+.text-progressbar {
+  font-size: 1.5em;
+  height: 1.5em;
+  width: 1.5em;
+  position: relative;
+  bottom: 4px;
+
 }

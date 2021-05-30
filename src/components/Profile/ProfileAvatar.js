@@ -1,6 +1,8 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 // import avatar from "../../assets/profile.png";
 import "./ProfileAvatar.css";
+
 const ProfileAvatar = (props) => {
   const { className, avatar } = props;
   return (

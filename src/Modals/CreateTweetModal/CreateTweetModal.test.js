@@ -1,6 +1,4 @@
 import {
-  act,
-  cleanup,
   fireEvent,
   render,
   screen,
@@ -9,13 +7,11 @@ import Tweet from "../../contents/Tweet/Tweet";
 import { store } from "../../redux/store/store";
 import { Provider } from "react-redux";
 import ActionNav from "../../components/ActionNav/ActionNav";
-import TweetList from "../../components/TweetList/TweetList";
-import CreateTweetModal from "./CreateTweetModal";
-
+import userEvent from "@testing-library/user-event";
 
 describe("CreateTweetModal Component", () => {
-  test("renders CreateTweetModal upon click on Desktop and Small Screens", async () => {
-    const { getByText, rerender } = render(
+  it("renders CreateTweetModal, users does not enter a value in the textbox and the tweet  button should be disabled", async () => {
+    const { getByRole } = render(
       <Provider store={store}>
         <Tweet />
         <ActionNav />
@@ -27,29 +23,16 @@ describe("CreateTweetModal Component", () => {
     );
 
     expect(buttonWidgetElement).toBeInTheDocument();
-
     fireEvent.click(buttonWidgetElement);
-    expect(
-      getByText(`Woohoo, you're reading this text in a modal!`)
-    ).toBeInTheDocument();
+    const modalButtonElement = getByRole("button", { name: "Tweet" });
+    expect(modalButtonElement).toBeDisabled(); // Test Case for tweet button should be disabled
 
-    // Re-render for small devices
-    rerender(
-      <Provider store={store}>
-        <TweetList isMobileScreen={true}/>
-        <CreateTweetModal />
-      </Provider>
-    );
-
-    const buttonWidgetElementMobile = await screen.findByTestId(
-      "create-tweet-widget-button"
-    );
-
-    expect(buttonWidgetElementMobile).toBeInTheDocument();
-     
-    expect(
-      getByText(`Woohoo, you're reading this text in a modal!`)
-    ).toBeInTheDocument();
-
+    const textAreaElement = getByRole("textbox"); // Enter an input in the textbox
+    expect(textAreaElement).toBeInTheDocument();
+    userEvent.type(textAreaElement, "Hello")
+      .then(() => {
+        expect(textAreaElement).toBe("hello");
+        expect(modalButtonElement).toBeEnabled(); // Test for tweet button should be  enabled
+      });
   });
 });

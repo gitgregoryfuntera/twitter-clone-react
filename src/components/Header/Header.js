@@ -4,8 +4,6 @@ import ProfileAvatar from "../Profile/ProfileAvatar";
 import { Stars } from "react-bootstrap-icons";
 import styles from "./Header.module.css";
 import avatar from "../../assets/profile.png";
-
-
 const Header = () => {
   return (
     <div className={`${styles["header"]}`}>
