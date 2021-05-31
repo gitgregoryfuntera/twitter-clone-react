@@ -1,17 +1,50 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import ProfileAvatar from "../Profile/ProfileAvatar";
 import { Stars } from "react-bootstrap-icons";
 import styles from "./Header.module.css";
-import avatar from "../../assets/profile.png";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { updateCurrentUser } from "../../redux/store/user/userSlice";
 const Header = () => {
+  const [currentUser, setCurrentUser] = useState();
+  const dispatch = useDispatch();
+
+  const fetchCurrentUser = useCallback(async () => {
+    try {
+      const {
+        data: { results },
+      } = await axios.get(`https://randomuser.me/api/`);
+      if (results.length) {
+        setCurrentUser(results[0]);
+        dispatch(updateCurrentUser(results[0]));
+      } else {
+        throw new Error("Something went wrong here...");
+      }
+    } catch (e) {
+      /**
+       * TODO: Add error handlers for avatar images
+       */
+      console.log(e);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchCurrentUser();
+  }, [fetchCurrentUser]);
+
   return (
     <div className={`${styles["header"]}`}>
       <Card className={`${styles["header-card"]}`}>
         <Card.Body>
           <div className={`d-flex`}>
             <span className={`${styles["header-avatar"]}`}>
-              <ProfileAvatar className={styles["avatar"]} avatar={avatar}/>
+              {currentUser && (
+                <ProfileAvatar
+                  className={styles["avatar"]}
+                  avatar={currentUser.picture.large}
+                />
+              )}
             </span>
 
             <h3

@@ -4,19 +4,18 @@ import { Modal } from "react-bootstrap";
 import { ArrowLeft, Globe2, XLg } from "react-bootstrap-icons";
 import "./CreateTweetModal.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createTweetStateActions } from "../../redux/store/store";
 import ProfileAvatar from "../../components/Profile/ProfileAvatar";
 import avatar from "../../assets/profile.png";
 import { useMediaQuery } from "react-responsive";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { toggle } from "../../redux/store/modal/modalSlice";
 
 const MAX_TEXT_LENGTH = 300;
 const CreateTweetModal = () => {
   const isCreateTweetModalOpen = useSelector(
-    (state) => state.isCreateTweetModalOpen
+    (state) => state.modal.isCreateTweetModalOpen
   );
-  const { TOGGLE_CREATE_TWEET_MODAL } = createTweetStateActions;
   const dispatch = useDispatch();
   const [tweet, setTweet] = useState("");
   const [textAreaHeight, setTextAreaHeight] = useState(2);
@@ -50,10 +49,7 @@ const CreateTweetModal = () => {
           dialogClassName="create-tweet-modal m-auto"
         >
           <Modal.Header>
-            <button
-              className="btn"
-              onClick={() => dispatch({ type: TOGGLE_CREATE_TWEET_MODAL })}
-            >
+            <button className="btn" onClick={() => dispatch(toggle())}>
               {isSmallScreen ? <ArrowLeft /> : <XLg />}
             </button>
             {isSmallScreen && (
