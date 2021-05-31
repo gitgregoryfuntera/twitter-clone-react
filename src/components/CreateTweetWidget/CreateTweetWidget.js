@@ -2,8 +2,6 @@ import React from "react";
 import { BrushFill } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { toggle } from "../../redux/store/modal/modalSlice";
-
-
 import styles from "./CreateTweetWidget.module.css";
 
 const CreateTweetWidget = (props) => {
