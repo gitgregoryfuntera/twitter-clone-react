@@ -20,3 +20,10 @@
     margin-left: 8em;
   }
 }
+
+
+@media (min-width: 1000px) {
+  .tweet-list {
+    margin-right: 16em;
+  }
+}

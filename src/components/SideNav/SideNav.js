@@ -1,10 +1,12 @@
 import React from 'react'
-
+import SearchTweet from './SearchTweet/SearchTweet'
+import styles from './SideNav.module.css';
+import { Card } from "react-bootstrap";
 const SideNav = () => {
     return (
-        <div>
-            
-        </div>
+        <Card className={styles['sidenav-container']}>
+            <SearchTweet />
+        </Card>
     )
 }
 

@@ -10,7 +10,7 @@ const TweetCard = (props) => {
     <div className={`tweet-item`}>
       <div className={`user w-100`}>
         <div className={`container-fluid`}>
-          <div className={`row`}>
+          <div className={`row mr-0 ml-0`}>
             <div className={`col-3 col-md-2 col-lg-1 m-0 p-0`}>
               <ProfileAvatar className={`${styles['avatar-icon']}`} avatar={data.picture.large}/>
             </div>

@@ -29,3 +29,11 @@
     display: none;
   }
 }
+
+
+@media (min-width: 1000px) {
+  .header-card {
+    margin-right: 16em;
+  }
+}
+
