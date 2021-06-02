@@ -10,7 +10,6 @@ import {
 } from "react-bootstrap-icons";
 import { useMediaQuery } from "react-responsive";
 import ProfileAvatar from "../Profile/ProfileAvatar";
-import avatar from "../../assets/profile.png";
 import styles from "./ActionNav.module.css";
 import CreateTweetWidget from "../CreateTweetWidget/CreateTweetWidget";
 import { useSelector } from "react-redux";

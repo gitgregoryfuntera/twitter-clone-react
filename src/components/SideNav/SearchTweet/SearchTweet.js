@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Input, InputContainer, Icon } from './SearchTweet.style';
+
 const SearchTweet = () => {
     return (
         <div>
-            <input placeholder="Search Twitter"/>
+            <InputContainer>
+                <Icon />
+                <Input placeholder="Search Twitter" type="text" />
+            </InputContainer>
+            
         </div>
     )
 }

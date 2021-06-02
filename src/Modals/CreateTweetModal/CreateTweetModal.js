@@ -16,6 +16,7 @@ const CreateTweetModal = () => {
   const isCreateTweetModalOpen = useSelector(
     (state) => state.modal.isCreateTweetModalOpen
   );
+  const currentUser = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
   const [tweet, setTweet] = useState("");
   const [textAreaHeight, setTextAreaHeight] = useState(2);
@@ -64,7 +65,8 @@ const CreateTweetModal = () => {
           <Modal.Body>
             <div className="create-tweet-container">
               <div className="avatar-container">
-                <ProfileAvatar avatar={avatar} />
+                { currentUser?.picture && <ProfileAvatar avatar={currentUser.picture.large} />}
+                
               </div>
 
               <div className="write-tweet-container pl-3">
