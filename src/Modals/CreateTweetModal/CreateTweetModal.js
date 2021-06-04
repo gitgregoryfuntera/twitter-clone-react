@@ -5,11 +5,11 @@ import { ArrowLeft, Globe2, XLg } from "react-bootstrap-icons";
 import "./CreateTweetModal.css";
 import { useDispatch, useSelector } from "react-redux";
 import ProfileAvatar from "../../components/Profile/ProfileAvatar";
-import avatar from "../../assets/profile.png";
 import { useMediaQuery } from "react-responsive";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { toggle } from "../../redux/store/modal/modalSlice";
+import CreateTweetForm from "../../components/CreateTweetForm/CreateTweetForm";
 
 const MAX_TEXT_LENGTH = 300;
 const CreateTweetModal = () => {
@@ -63,7 +63,19 @@ const CreateTweetModal = () => {
             )}
           </Modal.Header>
           <Modal.Body>
-            <div className="create-tweet-container">
+
+            <CreateTweetForm 
+              currentUser={currentUser}
+              tweet={tweet}
+              writeTweetHandler={writeTweetHandler}
+              textAreaHeight={textAreaHeight}
+              isSmallScreen={isSmallScreen}
+              textProgress={textProgress}
+            />
+
+
+            
+            {/* <div className="create-tweet-container">
               <div className="avatar-container">
                 { currentUser?.picture && <ProfileAvatar avatar={currentUser.picture.large} />}
                 
@@ -95,7 +107,10 @@ const CreateTweetModal = () => {
                   </div>
                 )}
               </div>
-            </div>
+            </div> */}
+
+
+
           </Modal.Body>
           <Modal.Footer>
             {!isSmallScreen && (

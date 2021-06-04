@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileAvatar from "../Profile/ProfileAvatar";
+import ProfileAvatar from "../../Profile/ProfileAvatar";
 import styles from "./TweetCard.module.css";
 
 import TweetContent from "./TweetContent";

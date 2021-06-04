@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ListGroup, Spinner } from "react-bootstrap";
-
 import CreateTweetWidget from "../CreateTweetWidget/CreateTweetWidget";
-import TweetCard from "./TweetCard";
+import TweetCard from "./TweetCard/TweetCard";
 import styles from "./TweetList.module.css";
+import TweetListCreateForm from "./TweetListCreateForm/TweetListCreateForm";
 
 const TweetList = ({ isMobileScreen }) => {
   const [users, setUsers] = useState([]);
@@ -65,22 +65,32 @@ const TweetList = ({ isMobileScreen }) => {
   );
 
   if (users.length !== 0) {
-    content = users.map((value, index) => {
-      if (index === users.length - 1) {
-        return (
-          <>
-            <ListGroup.Item ref={lastElement} key={value.email}>
+    content = (
+      <>
+        {!isMobileScreen && (
+          <ListGroup.Item>
+            <TweetListCreateForm />
+          </ListGroup.Item>
+        )}
+
+        {users.map((value, index) => {
+          if (index === users.length - 1) {
+            return (
+              <>
+                <ListGroup.Item ref={lastElement} key={value.email}>
+                  <TweetCard data={value} />
+                </ListGroup.Item>
+              </>
+            );
+          }
+          return (
+            <ListGroup.Item key={value.email}>
               <TweetCard data={value} />
             </ListGroup.Item>
-          </>
-        );
-      }
-      return (
-        <ListGroup.Item key={value.email}>
-          <TweetCard data={value} />
-        </ListGroup.Item>
-      );
-    });
+          );
+        })}
+      </>
+    );
   }
 
   if (isLoading && users.length === 0) {
