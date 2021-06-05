@@ -35,6 +35,11 @@ const TweetListCreateForm = () => {
         textAreaHeight={textAreaHeight}
         textProgress={textProgress}
       />
+      <div className="btn-container w-75">
+        <button disabled={!tweet.trim("").length} className="btn btn-primary float-right">
+          Tweet
+        </button>
+      </div>
     </>
   );
 };

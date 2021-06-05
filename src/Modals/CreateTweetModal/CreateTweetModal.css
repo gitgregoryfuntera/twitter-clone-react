@@ -18,12 +18,13 @@
 
 .create-tweet-container {
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 0.5fr 5fr;
 }
 
 .avatar-container {
   height: 100%;
   width: 5em;
+  margin-left: auto;
 }
 
 .write-tweet-container {

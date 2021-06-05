@@ -7,6 +7,7 @@ import {
   Envelope,
   Person,
   ThreeDots,
+  Hash,
 } from "react-bootstrap-icons";
 import { useMediaQuery } from "react-responsive";
 import ProfileAvatar from "../Profile/ProfileAvatar";
@@ -17,6 +18,7 @@ import { useSelector } from "react-redux";
 const ActionNav = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const isMobileScreen = useMediaQuery({ query: "(max-device-width: 500px)" });
+  const isBigScreen = useMediaQuery({ query: "(min-device-width: 1000px)" });
   return (
     <Card className={styles["actions-card"]}>
       <Card.Body>
@@ -34,7 +36,11 @@ const ActionNav = () => {
             <ListGroup.Item
               className={`${styles["actions-icon"]} btn ml-2 mr-2 sm-p-1`}
             >
-              <Search className={styles["specific-icon"]} />
+              {isBigScreen ? (
+                <Hash className={styles["specific-icon"]} />
+              ) : (
+                <Search className={styles["specific-icon"]} />
+              )}
             </ListGroup.Item>
             <ListGroup.Item
               className={`${styles["actions-icon"]} btn ml-2 mr-2 sm-p-1`}
