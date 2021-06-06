@@ -14,7 +14,7 @@ const TweetListCreateForm = () => {
       .split("\n").length;
 
     let textAreaHeight = length;
-    console.log(textAreaHeight);
+
     let tempLength = length * 1.5;
     if (length < 30) {
       textAreaHeight = tempLength;

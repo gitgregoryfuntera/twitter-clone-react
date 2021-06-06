@@ -25,6 +25,7 @@ const CreateTweetForm = (props) => {
 
       <div className="write-tweet-container pl-3">
         <textarea
+          data-testid="tweet-form-textarea"
           role="textbox"
           placeholder="What's happening?"
           maxLength={MAX_TEXT_LENGTH}
