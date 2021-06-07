@@ -18,6 +18,7 @@ const CreateTweetForm = (props) => {
   return (
     <div className="create-tweet-container">
       <div className="avatar-container">
+
         {currentUser?.picture && (
           <ProfileAvatar avatar={currentUser.picture.large} />
         )}
@@ -25,6 +26,7 @@ const CreateTweetForm = (props) => {
 
       <div className="write-tweet-container pl-3">
         <textarea
+          id="tweet-form-textarea"
           data-testid="tweet-form-textarea"
           role="textbox"
           placeholder="What's happening?"

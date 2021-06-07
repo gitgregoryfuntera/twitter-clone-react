@@ -62,8 +62,7 @@ const CreateTweetModal = () => {
             )}
           </Modal.Header>
           <Modal.Body>
-
-            <CreateTweetForm 
+            <CreateTweetForm
               currentUser={currentUser}
               tweet={tweet}
               writeTweetHandler={writeTweetHandler}
