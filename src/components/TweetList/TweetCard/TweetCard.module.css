@@ -1,7 +1,12 @@
 .avatar-icon {
     width: 5em;
     height: 5em;
-    position: absolute;
+    /* position: absolute;
     right: 0;
-    top: -1vh;
+    top: -1vh; */
   }
+
+div .card-grid {
+  display: grid;
+  grid-template-columns: 6em 1fr;
+}
