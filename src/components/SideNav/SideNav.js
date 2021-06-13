@@ -11,6 +11,11 @@ const SideNav = () => {
             <SearchTweet />
             <TrendsList />
             <WhoToFollowList/>
+            {/* Spacer */}
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <ChatBox/>
         </Card>
     )

@@ -8,4 +8,11 @@
     z-index: 1;
     overflow: auto;
     max-height: 60vh;
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer, Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
+
+.sidenav-container::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
