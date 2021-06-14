@@ -7,3 +7,8 @@ export const ChatBoxContainer = styled(Card)`
     width: 100%;
     cursor: pointer;
 `
+
+export const ToggleChatBoxIcon = styled.span`
+    position: fixed;
+    right: 1em;
+`

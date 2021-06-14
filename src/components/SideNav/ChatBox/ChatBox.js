@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { ChatBoxContainer } from "./ChatBox.style";
+import { ChatBoxContainer, ToggleChatBoxIcon } from "./ChatBox.style";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Transition } from "react-transition-group";
-import { CaretUp } from "react-bootstrap-icons";
+import { CaretUpFill, CaretDownFill } from "react-bootstrap-icons";
+import ChatBoxListItem from "./ChatBoxListItem";
 
 const defaultStyle = {
   transition: "all 0.3s ease 0s",
@@ -24,9 +25,9 @@ const ChatBox = () => {
       <Card.Body onClick={() => setToggleChatBox((prevState) => !prevState)}>
         <Card.Title>
           Messages
-          <span>
-            <CaretUp />
-          </span>
+          <ToggleChatBoxIcon>
+            {toggleChatBox ? <CaretDownFill /> : <CaretUpFill />}
+          </ToggleChatBoxIcon>
         </Card.Title>
       </Card.Body>
       <Transition in={toggleChatBox} timeout={300} mountOnEnter unmountOnExit>
@@ -38,9 +39,7 @@ const ChatBox = () => {
               ...transitionStyles[state],
             }}
           >
-            <ListGroupItem>Cras justo odio</ListGroupItem>
-            <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-            <ListGroupItem>Vestibulum at eros</ListGroupItem>
+            <ChatBoxListItem />
           </ListGroup>
         )}
       </Transition>
