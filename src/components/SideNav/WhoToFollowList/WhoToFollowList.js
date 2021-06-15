@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import ProfileAvatar from "../../Profile/ProfileAvatar";
-import avatarProfile from "../../../assets/profile.png";
 import { Grid } from "./WhoToFollowList.style";
 import axios from "axios";
 const WhoToFollowList = () => {

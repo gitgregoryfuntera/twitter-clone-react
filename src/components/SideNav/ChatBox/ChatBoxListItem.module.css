@@ -1,0 +1,5 @@
+.list-item-container  {
+    display: grid;
+    grid-column: 1fr 1fr;
+    grid-template-columns: 5em 1fr;
+}
