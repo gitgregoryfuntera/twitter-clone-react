@@ -12,7 +12,7 @@ const ChatBoxListItem = () => {
             <ProfileAvatar avatar={avatar} />
           </div>
           <div className="list-username">
-            <p className="font-weight-bold">
+            <p className="font-weight-bold ml-1">
               Hello World{" "}
               <span className={`${styles["username-container"]} font-weight-normal`}>
                 Hello
