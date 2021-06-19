@@ -12,9 +12,7 @@ const WhoToFollowList = () => {
       const response = await axios.get(
         `https://randomuser.me/api/?results=3&page=1`
       );
-      console.log(response);
       const { results } = response.data;
-      console.log(results);
       setWhoToFollowList(results);
       setIsLoading(false);
     } catch (e) {

@@ -1,21 +1,21 @@
-.list-item-container  {
-    display: grid;
-    grid-column: 1fr 1fr;
-    grid-template-columns: 4em 1fr;
+.list-item-container {
+  display: grid;
+  grid-column: 1fr 1fr;
+  grid-template-columns: 4em 1fr;
 }
 
 .date-container {
-    position: fixed;
-    font-weight: normal;
-    padding-top: 0.3em;
+  float: right;
+  top: 5px;
+  position: relative;
 }
 
 .username-container {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 115px;
-    display: inline-block;
-    position: relative;
-    top: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 120px;
+  display: inline-block;
+  position: relative;
+  top: 5px;
 }
