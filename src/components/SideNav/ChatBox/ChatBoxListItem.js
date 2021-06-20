@@ -3,6 +3,19 @@ import { ListGroupItem, Spinner, ListGroup } from "react-bootstrap";
 import ProfileAvatar from "../../Profile/ProfileAvatar";
 import styles from "./ChatBoxListItem.module.css";
 import axios from "axios";
+import { LoremIpsum } from "lorem-ipsum";
+
+const lorem = new LoremIpsum({
+  sentencesPerParagraph: {
+    max: 8,
+    min: 4
+  },
+  wordsPerSentence: {
+    max: 16,
+    min: 4
+  }
+});
+
 const ChatBoxListItem = () => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -53,10 +66,18 @@ const ChatBoxListItem = () => {
                   <span
                     className={`${styles["date-container"]} font-weight-normal`}
                   >
-                    Dec. 21, 2021
+                    {new Date(
+                      +new Date() - Math.floor(Math.random() * 10000000000)
+                    ).toLocaleDateString(undefined, {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
                   </span>
                 </p>
-                <p className="chat-text ml-1">123</p>
+                <p className="chat-text ml-1">{
+                  lorem.generateWords(5)
+                }</p>
               </div>
             </div>
           </ListGroupItem>

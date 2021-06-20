@@ -6,7 +6,7 @@
 
 .date-container {
   float: right;
-  top: 5px;
+  top: 0.3125rem;
   position: relative;
 }
 
@@ -14,8 +14,8 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 120px;
+  width: 100px;
   display: inline-block;
   position: relative;
-  top: 5px;
+  top: 0.3125rem;
 }

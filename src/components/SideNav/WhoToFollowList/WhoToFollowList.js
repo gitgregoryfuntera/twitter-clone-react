@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, ListGroup, Spinner } from "react-bootstrap";
 import ProfileAvatar from "../../Profile/ProfileAvatar";
 import { Grid } from "./WhoToFollowList.style";
 import axios from "axios";
@@ -25,7 +25,13 @@ const WhoToFollowList = () => {
     fetchWhoToFollow();
   }, [fetchWhoToFollow]);
 
-  let content = <div>Loading...</div>;
+  let content = (
+    <ListGroup.Item className="text-center">
+    <Spinner animation="border" role="status" variant="primary">
+      <span className="sr-only">Loading...</span>
+    </Spinner>
+  </ListGroup.Item>
+  );
 
   if (!isLoading) {
     content = (
@@ -54,7 +60,7 @@ const WhoToFollowList = () => {
 
   return (
     <Card className="mt-3">
-      <Card.Header>Who To Follow</Card.Header>
+      <Card.Header><h4>Who to follow</h4></Card.Header>
       {content}
       <Card.Header>
         <button className="btn btn-primary">Show More</button>
