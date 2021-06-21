@@ -6,6 +6,8 @@ import styles from "./Header.module.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { updateCurrentUser } from "../../redux/store/user/userSlice";
+import Switch from "react-switch";
+
 const Header = () => {
   const [currentUser, setCurrentUser] = useState();
   const dispatch = useDispatch();
@@ -53,7 +55,12 @@ const Header = () => {
               Home
             </h3>
             <span className={`${styles["top-tweets"]}`}>
-              <Stars />
+              <Switch 
+                 uncheckedIcon={
+                  <Stars />
+                }
+              />
+              {/* <Stars /> */}
             </span>
           </div>
         </Card.Body>
