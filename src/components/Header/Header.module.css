@@ -30,6 +30,14 @@
   }
 }
 
+.switch-icon {
+  position: relative;
+  bottom: 0.5rem;
+  font-size: 1.25rem;
+  left: 0.3rem;
+  color: #fff;
+}
+
 
 @media (min-width: 1000px) {
   .header-card {

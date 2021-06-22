@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import ProfileAvatar from "../Profile/ProfileAvatar";
-import { Stars } from "react-bootstrap-icons";
+import { MoonFill, SunFill } from "react-bootstrap-icons";
 import styles from "./Header.module.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -10,6 +10,7 @@ import Switch from "react-switch";
 
 const Header = () => {
   const [currentUser, setCurrentUser] = useState();
+  const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
 
   const fetchCurrentUser = useCallback(async () => {
@@ -55,12 +56,22 @@ const Header = () => {
               Home
             </h3>
             <span className={`${styles["top-tweets"]}`}>
-              <Switch 
-                 uncheckedIcon={
-                  <Stars />
+              <Switch
+                onChange={(checked) => setChecked(checked)}
+                uncheckedIcon={
+                  <div>
+                    <SunFill className={`${styles["switch-icon"]}`} />
+                  </div>
                 }
+                checked={checked}
+                checkedIcon={
+                  <div>
+                    <MoonFill className={`${styles["switch-icon"]}`} />
+                  </div>
+                }
+                offColor="#007bff"
+                onColor="#4a4e51"
               />
-              {/* <Stars /> */}
             </span>
           </div>
         </Card.Body>
