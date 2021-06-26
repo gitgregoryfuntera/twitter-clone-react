@@ -4,14 +4,17 @@ import ProfileAvatar from "../Profile/ProfileAvatar";
 import { MoonFill, SunFill } from "react-bootstrap-icons";
 import styles from "./Header.module.css";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { updateCurrentUser } from "../../redux/store/user/userSlice";
+import { toggleTheme } from "../../redux/store/theme/themeSlice";
 import Switch from "react-switch";
+import { HeaderContainer, HeaderCard, HeaderAvatar } from "./Header.style";
 
 const Header = () => {
   const [currentUser, setCurrentUser] = useState();
   const [checked, setChecked] = useState(false);
   const dispatch = useDispatch();
+  const themeValue = useSelector((state) => state.theme.isLightTheme);
 
   const fetchCurrentUser = useCallback(async () => {
     try {
@@ -36,19 +39,25 @@ const Header = () => {
     fetchCurrentUser();
   }, [fetchCurrentUser]);
 
+  const toggleThemeHandler = (checked) => {
+    setChecked(checked);
+    dispatch(toggleTheme());
+    console.log(themeValue);
+  };
+
   return (
-    <div className={`${styles["header"]}`}>
-      <Card className={`${styles["header-card"]}`}>
+    <HeaderContainer>
+      <HeaderCard>
         <Card.Body>
-          <div className={`d-flex`}>
-            <span className={`${styles["header-avatar"]}`}>
+          <div className="d-flex">
+            <HeaderAvatar>
               {currentUser && (
                 <ProfileAvatar
                   className={styles["avatar"]}
                   avatar={currentUser.picture.large}
                 />
               )}
-            </span>
+            </HeaderAvatar>
 
             <h3
               className={`p-0 m-0 position-relative font-weight-bold ${styles["header-home-label"]}`}
@@ -57,7 +66,7 @@ const Header = () => {
             </h3>
             <span className={`${styles["top-tweets"]}`}>
               <Switch
-                onChange={(checked) => setChecked(checked)}
+                onChange={(checked) => toggleThemeHandler(checked)}
                 uncheckedIcon={
                   <div>
                     <SunFill className={`${styles["switch-icon"]}`} />
@@ -75,8 +84,8 @@ const Header = () => {
             </span>
           </div>
         </Card.Body>
-      </Card>
-    </div>
+      </HeaderCard>
+    </HeaderContainer>
   );
 };
 
