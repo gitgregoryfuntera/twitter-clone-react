@@ -2,13 +2,20 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import ProfileAvatar from "../Profile/ProfileAvatar";
 import { MoonFill, SunFill } from "react-bootstrap-icons";
-import styles from "./Header.module.css";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { updateCurrentUser } from "../../redux/store/user/userSlice";
 import { toggleTheme } from "../../redux/store/theme/themeSlice";
 import Switch from "react-switch";
-import { HeaderContainer, HeaderCard, HeaderAvatar } from "./Header.style";
+import {
+  HeaderContainer,
+  HeaderCard,
+  HeaderAvatar,
+  HeaderHomeLabel,
+  TopTweets,
+  SwitchIcon,
+  ProfileAvatarContainer
+} from "./Header.style";
 
 const Header = () => {
   const [currentUser, setCurrentUser] = useState();
@@ -47,41 +54,41 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <HeaderCard>
+      <HeaderCard isLightTheme={themeValue}>
         <Card.Body>
           <div className="d-flex">
             <HeaderAvatar>
               {currentUser && (
-                <ProfileAvatar
-                  className={styles["avatar"]}
-                  avatar={currentUser.picture.large}
-                />
+                <ProfileAvatarContainer>
+                  <ProfileAvatar
+                    avatar={currentUser.picture.large}
+                  />
+                </ProfileAvatarContainer>
+
               )}
             </HeaderAvatar>
 
-            <h3
-              className={`p-0 m-0 position-relative font-weight-bold ${styles["header-home-label"]}`}
-            >
+            <HeaderHomeLabel className="p-0 m-0 position-relative font-weight-bold">
               Home
-            </h3>
-            <span className={`${styles["top-tweets"]}`}>
+            </HeaderHomeLabel>
+            <TopTweets>
               <Switch
                 onChange={(checked) => toggleThemeHandler(checked)}
                 uncheckedIcon={
-                  <div>
-                    <SunFill className={`${styles["switch-icon"]}`} />
-                  </div>
+                  <SwitchIcon>
+                    <SunFill />
+                  </SwitchIcon>
                 }
                 checked={checked}
                 checkedIcon={
-                  <div>
-                    <MoonFill className={`${styles["switch-icon"]}`} />
-                  </div>
+                  <SwitchIcon>
+                    <MoonFill />
+                  </SwitchIcon>
                 }
                 offColor="#007bff"
                 onColor="#4a4e51"
               />
-            </span>
+            </TopTweets>
           </div>
         </Card.Body>
       </HeaderCard>
